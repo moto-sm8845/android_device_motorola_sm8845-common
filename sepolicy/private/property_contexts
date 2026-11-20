@@ -1,0 +1,2 @@
+# ST NFC vendor extension library selection (system_ext/etc/init/init.st.nfc.rc)
+persist.nfc_vendor_extn.lib_file_name u:object_r:nfc_prop:s0

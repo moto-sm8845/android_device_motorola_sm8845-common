@@ -257,7 +257,7 @@ persist.vendor.radio.stack_id_0=0
 persist.vendor.radio.stack_id_1=1
 persist.vendor.radio.suppress_ussd_rel=1
 ro.telephony.default_network=33,33
-ro.vendor.use_data_netmgrd=true
+ro.vendor.use_data_netmgrd=false
 
 # SOC
 ro.hardware.soc.manufacturer=qcom

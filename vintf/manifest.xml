@@ -59,10 +59,10 @@
         <fqname>@1.0::ICameraDesktop/default</fqname>
         <fqname>@2.0::ICameraDesktop/default</fqname>
     </hal>
-    <hal format="hidl">
-        <name>vendor.nxp.hardware.nfc</name>
-        <transport>hwbinder</transport>
-        <fqname>@2.0::INqNfc/default</fqname>
+    <hal format="aidl">
+        <name>android.hardware.nfc</name>
+        <version>2</version>
+        <fqname>INfc/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.data.factory</name>

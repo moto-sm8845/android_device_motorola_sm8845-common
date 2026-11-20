@@ -1,5 +1,9 @@
 [
   {
+    "type": "kernel",
+    "version": "6.12"
+  },
+  {
     "repository": "android_kernel_motorola_sm8845",
     "target_path": "kernel/platform/kernel-6.12/vendor/motorola/sm8845"
   },
