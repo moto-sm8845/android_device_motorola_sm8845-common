@@ -857,7 +857,7 @@ function start_hbtp()
 }
 
 case "$target" in
-        "kalama")
+        "canoe")
                 if [ -f /sys/devices/soc0/chip_family ]; then
                         chip_family_id=`cat /sys/devices/soc0/chip_family`
                 else

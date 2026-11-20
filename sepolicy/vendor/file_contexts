@@ -1,2 +1,2 @@
 # Fingerprint
-/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.moto_sm8550_fod   u:object_r:hal_fingerprint_default_exec:s0
+# Handled by the Motorola AIDL fingerprint HAL in vendor.

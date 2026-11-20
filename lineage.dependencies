@@ -1,15 +1,15 @@
 [
   {
-    "repository": "android_kernel_motorola_sm8550",
-    "target_path": "kernel/motorola/sm8550"
+    "repository": "android_kernel_motorola_sm8845",
+    "target_path": "kernel/platform/kernel-6.12/vendor/motorola/sm8845"
   },
   {
-    "repository": "android_kernel_motorola_sm8550-modules",
-    "target_path": "kernel/motorola/sm8550-modules"
+    "repository": "android_kernel_motorola_sm8845-modules",
+    "target_path": "kernel/platform/kernel-6.12/vendor/motorola/sm8845-modules"
   },
   {
-    "repository": "android_kernel_motorola_sm8550-devicetrees",
-    "target_path": "kernel/motorola/sm8550-devicetrees"
+    "repository": "android_kernel_motorola_sm8845-devicetrees",
+    "target_path": "kernel/platform/kernel-6.12/vendor/motorola/sm8845-devicetrees"
   },
   {
     "repository": "android_hardware_motorola",
