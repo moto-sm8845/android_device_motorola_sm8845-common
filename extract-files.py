@@ -51,6 +51,21 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
+    'system_ext/lib64/libwfdservice.so': blob_fixup()
+        .replace_needed('android.media.audio.common.types-V5-cpp.so', 'android.media.audio.common.types-V4-cpp.so'),
+    # Built against audio.core-V3, which reexports audio.common-V4; the in-tree
+    # QTI audio HAL builds audio.core-V4 (audio.common-V5), and two versions of
+    # audio.common cannot meet in one module.
+    'vendor/lib64/libqtigefar.so': blob_fixup()
+        .replace_needed('android.hardware.audio.core-V3-ndk.so', 'android.hardware.audio.core-V4-ndk.so')
+        .replace_needed('android.media.audio.common.types-V4-ndk.so', 'android.media.audio.common.types-V5-ndk.so'),
+    # Only link media.c2-V1, while the tree's libcodec2_aidl_noisurface builds
+    # media.c2-V2; a module cannot carry both generations.
+    (
+        'vendor/bin/hw/vendor.qti.media.c2@1.0-service',
+        'vendor/bin/hw/vendor.qti.media.c2audio@1.0-service',
+    ): blob_fixup()
+        .replace_needed('android.hardware.media.c2-V1-ndk.so', 'android.hardware.media.c2-V2-ndk.so'),
     'system/framework/WfdCommon.jar': blob_fixup()
         .apktool_patch('blob-patches/WfdCommon.patch'),
     'system_ext/etc/permissions/moto-telephony.xml': blob_fixup()
@@ -61,8 +76,6 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libprotobuf-cpp-full.so', 'libprotobuf-cpp-full-21.7.so'),
     'system_ext/priv-app/ims/ims.apk': blob_fixup()
         .apktool_patch('ims-patches'),
-    ('vendor/bin/hw/android.hardware.security.keymint-service-qti', 'vendor/lib64/libqtikeymint.so'): blob_fixup()
-        .add_needed('android.hardware.security.rkp-V3-ndk.so'),
     'vendor/bin/init.kernel.post_boot.sh': blob_fixup()
         .regex_replace('ro.boot.using_zram_from_fstab', 'ro.vendor.zram.swapon'),
     'vendor/etc/sensors/hals.conf': blob_fixup()
@@ -73,8 +86,10 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('libqti-perfd-client.so\n', ''),
     ('vendor/bin/hw/motorola.hardware.sensorext-service', 'vendor/lib64/libdpps.so', 'vendor/lib64/libsnapdragoncolor-manager.so'): blob_fixup()
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
+    # libgralloctypes (in-tree) builds graphics.common-V7.
     'vendor/lib64/libqcodec2_core.so': blob_fixup()
-        .add_needed('libcodec2_shim.so'),
+        .add_needed('libcodec2_shim.so')
+        .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
     'vendor/lib64/sensors.moto.so': blob_fixup()
         .add_needed('libbase_shim.so'),
     'vendor/lib64/vendor.libdpmframework.so': blob_fixup()
