@@ -18,8 +18,8 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
-    'device/motorola/sm8550-common',
-    'hardware/qcom-caf/sm8550',
+    'device/motorola/sm8845-common',
+    'hardware/qcom-caf/sm8850',
     'hardware/qcom-caf/wlan',
     'hardware/motorola',
     'vendor/qcom/opensource/commonsys-intf/display',
@@ -71,8 +71,6 @@ blob_fixups: blob_fixups_user_type = {
         .add_line_if_missing('pipe2: 1'),
     'vendor/etc/public.libraries.txt': blob_fixup()
         .regex_replace('libqti-perfd-client.so\n', ''),
-    'vendor/etc/media_codecs_kalama.xml': blob_fixup()
-        .regex_replace('.*media_codecs_(google_audio|google_c2|google_telephony|google_video|vendor_audio).*\n', ''),
     ('vendor/bin/hw/motorola.hardware.sensorext-service', 'vendor/lib64/libdpps.so', 'vendor/lib64/libsnapdragoncolor-manager.so'): blob_fixup()
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
     'vendor/lib64/libqcodec2_core.so': blob_fixup()
@@ -84,7 +82,7 @@ blob_fixups: blob_fixups_user_type = {
 }  # fmt: skip
 
 module = ExtractUtilsModule(
-    'sm8550-common',
+    'sm8845-common',
     'motorola',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
